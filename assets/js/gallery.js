@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     for (let i = 0; i < data.length; i++) {
       const item = data[i];
       html += `
-                <div class="gallery-item">
+                <div class="galleryCard">
                     <h2>${item.name}</h2>
                     <img src="${item.picture}" alt="${item.name}" />
                     <p>${item.shortDescription}</p>
