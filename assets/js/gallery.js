@@ -74,6 +74,13 @@ function fetchData() {
         'Carcharodon carcharias, også kendt som en hvidhaj eller great white haj, er en stor rovdyr, der lever i kystfarvande over hele verden. Den har en grå-blå krop med en trekantet finne på ryggen og en stor kraftig kæbe med skarpe tænder. Carcharodon carcharias er kendt for at være en top-rovdyr og jager primært sæler og fisk. Den er også kendt for dens sjældne, men berygtede, angreb på mennesker, selvom sådanne angreb ofte er utilsigtede og sjældne.',
       shortDescription: 'Carcharodon carcharias, også kendt som en hvidhaj.',
     },
+    // Extra animal: Bo
+    {
+      name: 'Bo',
+      picture: 'assets/img/Bo Aldrig online.png',
+      description: 'Bo er et fantasidyr, der elsker eventyr og sjov. Her kan du skrive en beskrivelse af Bo og tilføje et billede i mappen assets/img/bo.jpg.',
+      shortDescription: 'Bo, et fantasidyr med plads til forbedring.',
+    },
   ];
   return myData;
 }
