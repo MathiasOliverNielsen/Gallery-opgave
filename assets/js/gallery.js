@@ -7,27 +7,26 @@ let myData = null;
 // din kode her
 
 // Wait for DOM to load
-document.addEventListener('DOMContentLoaded', function () {
-  // Simulate delay for data fetching
-  setTimeout(function () {
-    const data = fetchData();
-    const galleryContainer = document.getElementById('app');
-    let html = '';
-    for (let i = 0; i < data.length; i++) {
-      const item = data[i];
-      html += `
-                <div class="galleryCard">
-                    <h2>${item.name}</h2>
-                    <img src="${item.picture}" alt="${item.name}" />
-                    <p>${item.shortDescription}</p>
-                </div>
-            `;
-    }
-    if (galleryContainer) {
-      galleryContainer.innerHTML = html;
-    }
-  }, myLoadTime);
-});
+
+// Simulate delay for data fetching
+setTimeout(function () {
+  const data = fetchData();
+  const galleryContainer = document.getElementById('app');
+  let html = '';
+  for (let i = 0; i < data.length; i++) {
+    const item = data[i];
+    html += `
+      <div class="galleryCard">
+        <h2>${item.name}</h2>
+        <img src="${item.picture}" alt="${item.name}" />
+        <p>${item.shortDescription}</p>
+      </div>
+    `;
+  }
+  if (galleryContainer) {
+    galleryContainer.innerHTML = html;
+  }
+}, myLoadTime);
 
 /*  get data function  DO NOT TOUCH!!!!! ......................................................*/
 
