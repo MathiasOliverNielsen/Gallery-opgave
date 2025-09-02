@@ -8,25 +8,53 @@ let myData = null;
 
 // Wait for DOM to load
 
-// Simulate delay for data fetching
-setTimeout(function () {
-  const data = fetchData();
-  const galleryContainer = document.getElementById('app');
-  let html = '';
-  for (let i = 0; i < data.length; i++) {
-    const item = data[i];
-    html += `
-      <div class="galleryCard">
-        <h2>${item.name}</h2>
-        <img src="${item.picture}" alt="${item.name}" />
-        <p>${item.shortDescription}</p>
-      </div>
-    `;
-  }
-  if (galleryContainer) {
-    galleryContainer.innerHTML = html;
-  }
-}, myLoadTime);
+// Simulate delay for data fetching this is not nessesary here,
+//  however i will prop be needed in the future when we collect data form an actual server
+
+const data = fetchData();
+const galleri = document.getElementById('app');
+let html = '';
+data.forEach((dyr) => {
+  html += `
+    <div class="galleryCard">
+      <h2>${dyr.name}</h2>
+      <img src="${dyr.picture}" alt="${dyr.name}" class="gallery-img" />
+      <p class="gallery-desc">${dyr.shortDescription}</p>
+      <p class="gallery-full-desc" style="display:none;">${dyr.description}</p>
+    </div>
+  `;
+});
+if (galleri) {
+  galleri.innerHTML = html;
+
+  const images = galleri.querySelectorAll('.gallery-img');
+  images.forEach((img) => {
+    img.addEventListener('click', function () {
+      const card = img.closest('.galleryCard');
+      const isEnlarged = img.classList.contains('enlarged');
+      const cards = galleri.querySelectorAll('.galleryCard');
+      const shortDesc = card.querySelector('.gallery-desc');
+      const fullDesc = card.querySelector('.gallery-full-desc');
+      if (!isEnlarged) {
+        // Enlarge image and card, show full description
+        cards.forEach((c) => {
+          if (c !== card) c.style.display = 'none';
+        });
+        img.classList.add('enlarged');
+        card.classList.add('enlarged-card');
+        if (shortDesc) shortDesc.style.display = 'none';
+        if (fullDesc) fullDesc.style.display = '';
+      } else {
+        // Restore gallery, show short description
+        cards.forEach((c) => (c.style.display = ''));
+        img.classList.remove('enlarged');
+        card.classList.remove('enlarged-card');
+        if (shortDesc) shortDesc.style.display = '';
+        if (fullDesc) fullDesc.style.display = 'none';
+      }
+    });
+  });
+}
 
 /*  get data function  DO NOT TOUCH!!!!! ......................................................*/
 
